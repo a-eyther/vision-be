@@ -38,7 +38,8 @@ const corsOptions = {
     const defaultOrigins = [
       'http://localhost:5173',
       'http://localhost:3000',
-      'http://localhost:5001'
+      'http://localhost:5001',
+      'https://project-theia.vercel.app'
     ];
     
     // Parse allowed origins from environment variable
