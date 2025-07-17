@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Cycle Management Services Proposal - {{hospitalName}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Base font size for the application */
+            --font-size: 14px;
+            
+            /* Typography scale variables */
+            --text-xs: 11px;
+            --text-sm: 14px;
+            --text-base: 16px;
+            --text-lg: 18px;
+            --text-xl: 22px;
+            --text-2xl: 26px;
+            --text-4xl: 32px;
+            --text-6xl: 42px;
+            --text-9xl: 72px;
+            
+            /* Font weights */
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            
+            /* Brand Colors */
+            --background: rgba(250, 251, 255, 1.00);
+            --foreground: rgba(30, 41, 59, 1.00);
+            --card: rgba(255, 255, 255, 1.00);
+            --card-foreground: rgba(30, 41, 59, 1.00);
+            --primary: rgba(59, 130, 246, 1.00);
+            --primary-foreground: rgba(255, 255, 255, 1.00);
+            --secondary: rgba(239, 246, 255, 1.00);
+            --secondary-foreground: rgba(30, 58, 138, 1.00);
+            --muted: rgba(248, 250, 252, 1.00);
+            --muted-foreground: rgba(100, 116, 139, 1.00);
+            --accent: rgba(147, 51, 234, 1.00);
+            --accent-foreground: rgba(255, 255, 255, 1.00);
+            --destructive: rgba(239, 68, 68, 1.00);
+            --destructive-foreground: rgba(255, 255, 255, 1.00);
+            --border: rgba(226, 232, 240, 1.00);
+            --chart-1: rgba(59, 130, 246, 1.00);
+            --chart-2: rgba(147, 51, 234, 1.00);
+            --chart-3: rgba(16, 185, 129, 1.00);
+            --chart-4: rgba(245, 158, 11, 1.00);
+            --chart-5: rgba(239, 68, 68, 1.00);
+            
+            /* Brand specific gradients */
+            --gradient-primary: linear-gradient(135deg, rgba(59, 130, 246, 1.00) 0%, rgba(30, 58, 138, 1.00) 100%);
+            --gradient-accent: linear-gradient(135deg, rgba(147, 51, 234, 1.00) 0%, rgba(99, 102, 241, 1.00) 100%);
+            --gradient-success: linear-gradient(135deg, rgba(16, 185, 129, 1.00) 0%, rgba(5, 150, 105, 1.00) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: white;
+            color: var(--foreground);
+            font-size: var(--font-size);
+            line-height: 1.5;
+        }
+
+        /* PDF-specific page styling */
+        .pdf-container {
+            width: 210mm;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Print Styles for PDF */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+            }
+            
+            .page {
+                height: 297mm !important;
+                width: 210mm !important;
+                page-break-after: always !important;
+            }
+            
+            .page:last-child {
+                page-break-after: avoid !important;
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-9xl);
+            font-weight: var(--font-weight-bold);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-6xl);
+            font-weight: var(--font-weight-bold);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-2xl);
+            font-weight: var(--font-weight-semibold);
+            line-height: 1.3;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-lg);
+            font-weight: var(--font-weight-semibold);
+            line-height: 1.4;
+        }
+
+        h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-base);
+            font-weight: var(--font-weight-semibold);
+            line-height: 1.5;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-sm);
+            font-weight: var(--font-weight-normal);
+            line-height: 1.6;
+        }
+
+        /* Clean Card Components - removing shadows */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        
+        /* Remove rounded corners on first page */
+        .no-rounded {
+            border-radius: 0 !important;
+        }
+
+        .card-header {
+            padding: 32px 32px 16px;
+        }
+
+        .card-content {
+            padding: 32px;
+        }
+
+        /* Brand specific utility classes */
+        .brand-gradient-primary {
+            background: var(--gradient-primary);
+        }
+
+        .brand-gradient-accent {
+            background: var(--gradient-accent);
+        }
+
+        .brand-gradient-success {
+            background: var(--gradient-success);
+        }
+        
+        /* Table header gradient fix */
+        table thead tr.brand-gradient-primary {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 1.00) 0%, rgba(30, 58, 138, 1.00) 100%);
+        }
+        
+        table thead tr.brand-gradient-primary th {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        /* Badge component */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: var(--text-xs);
+            font-weight: var(--font-weight-medium);
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .badge-primary {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .badge-secondary {
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        .badge-success {
+            background: var(--chart-3);
+            color: white;
+        }
+
+        .badge-warning {
+            background: var(--chart-4);
+            color: white;
+        }
+
+        .badge-accent {
+            background: var(--accent);
+            color: var(--accent-foreground);
+        }
+
+        /* Utility classes */
+        .text-primary { color: var(--primary); }
+        .text-secondary-foreground { color: var(--secondary-foreground); }
+        .text-foreground { color: var(--foreground); }
+        .text-muted-foreground { color: var(--muted-foreground); }
+        .text-primary-foreground { color: var(--primary-foreground); }
+        .text-accent-foreground { color: var(--accent-foreground); }
+        .text-destructive { color: var(--destructive); }
+        .text-chart-3 { color: var(--chart-3); }
+        .text-chart-4 { color: var(--chart-4); }
+        .text-accent { color: var(--accent); }
+        .text-white { color: white !important; }
+        
+        /* Table specific styles for colored backgrounds */
+        .bg-chart-4-10 td.text-white,
+        .bg-chart-3-10 td.text-white,
+        .bg-accent-10 td.text-white {
+            color: white !important;
+        }
+
+        .bg-secondary { background: var(--secondary); }
+        .bg-muted { background: var(--muted); }
+        .bg-primary { background: var(--primary); }
+        .bg-destructive { background: var(--destructive); }
+        .bg-chart-3 { background: var(--chart-3); }
+        .bg-chart-4 { background: var(--chart-4); }
+        .bg-accent { background: var(--accent); }
+
+        .border-primary { border-color: var(--primary); }
+        .border-destructive { border-color: var(--destructive); }
+        .border-chart-3 { border-color: var(--chart-3); }
+        .border-chart-4 { border-color: var(--chart-4); }
+        .border-accent { border-color: var(--accent); }
+
+        .font-semibold { font-weight: var(--font-weight-semibold); }
+        .font-bold { font-weight: var(--font-weight-bold); }
+        .font-medium { font-weight: var(--font-weight-medium); }
+
+        .text-xs { font-size: var(--text-xs); }
+        .text-sm { font-size: var(--text-sm); }
+        .text-base { font-size: var(--text-base); }
+        .text-lg { font-size: var(--text-lg); }
+        .text-xl { font-size: var(--text-xl); }
+        .text-2xl { font-size: var(--text-2xl); }
+        .text-4xl { font-size: var(--text-4xl); }
+
+        .leading-none { line-height: 1; }
+        .leading-tight { line-height: 1.25; }
+        .leading-relaxed { line-height: 1.625; }
+
+        .uppercase { text-transform: uppercase; }
+        .tracking-wide { letter-spacing: 0.025em; }
+        .tracking-wider { letter-spacing: 0.05em; }
+
+        .opacity-95 { opacity: 0.95; }
+        .opacity-70 { opacity: 0.7; }
+        .opacity-80 { opacity: 0.8; }
+
+        .mb-1 { margin-bottom: 4px; }
+        .mb-2 { margin-bottom: 8px; }
+        .mb-3 { margin-bottom: 12px; }
+        .mb-4 { margin-bottom: 16px; }
+        .mb-6 { margin-bottom: 24px; }
+        .mb-8 { margin-bottom: 32px; }
+        .mb-10 { margin-bottom: 40px; }
+        .mb-12 { margin-bottom: 48px; }
+        .mt-8 { margin-top: 32px; }
+        .mt-auto { margin-top: auto; }
+
+        .p-3 { padding: 12px; }
+        .p-4 { padding: 16px; }
+        .p-6 { padding: 24px; }
+        .p-8 { padding: 32px; }
+        .p-10 { padding: 40px; }
+        .p-12 { padding: 48px; }
+        .px-3 { padding-left: 12px; padding-right: 12px; }
+        .py-1 { padding-top: 4px; padding-bottom: 4px; }
+        .pb-4 { padding-bottom: 16px; }
+        .pb-6 { padding-bottom: 24px; }
+
+        .space-y-2 > * + * { margin-top: 8px; }
+        .space-y-3 > * + * { margin-top: 12px; }
+        .space-y-4 > * + * { margin-top: 16px; }
+        .space-y-6 > * + * { margin-top: 24px; }
+        .space-y-8 > * + * { margin-top: 32px; }
+
+        .gap-3 { gap: 12px; }
+        .gap-4 { gap: 16px; }
+        .gap-6 { gap: 24px; }
+
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-1 { flex: 1; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .max-w-4xl { max-width: 896px; }
+
+        .rounded-full { border-radius: 9999px; }
+        .rounded-lg { border-radius: 8px; }
+        .rounded { border-radius: 6px; }
+
+        .border { border-width: 1px; }
+        .border-2 { border-width: 2px; }
+        .border-l-4 { border-left-width: 4px; }
+        .border-b { border-bottom-width: 1px; }
+        .border-0 { border-width: 0; }
+
+        .overflow-hidden { overflow: hidden; }
+        .overflow-x-auto { overflow-x: auto; }
+
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+
+        /* Table styles - cleaned up */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--text-xs);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-weight: var(--font-weight-semibold);
+            background: var(--gradient-primary);
+            color: var(--primary-foreground);
+        }
+
+        .table-success-row {
+            background: var(--gradient-success);
+            color: white;
+        }
+
+        .table-success-row th,
+        .table-success-row td {
+            color: white !important;
+            font-weight: var(--font-weight-bold);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(248, 250, 252, 0.5);
+        }
+
+        /* Logo styling */
+        .logo-container {
+            width: 320px;
+            height: 80px;
+            margin-bottom: 24px;
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        /* Cover page specific styles */
+        .cover-content {
+            position: relative;
+            padding: 48px;
+            color: var(--primary-foreground);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cover-gradient-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .divider-line {
+            width: 160px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 9999px;
+        }
+
+        .small-divider {
+            width: 96px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Metric card styles - cleaned up */
+        .metric-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid;
+            border-radius: 12px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Color variations - lighter backgrounds */
+        .bg-secondary-50 { background: rgba(239, 246, 255, 0.5); }
+        .bg-accent-10 { background: rgba(147, 51, 234, 0.1); }
+        .bg-chart-4-10 { background: rgba(245, 158, 11, 0.1); }
+        .bg-chart-3-10 { background: rgba(16, 185, 129, 0.1); }
+        .bg-primary-10 { background: rgba(59, 130, 246, 0.1); }
+        .bg-destructive-5 { background: rgba(239, 68, 68, 0.05); }
+        .bg-white-50 { background: rgba(255, 255, 255, 0.5); }
+        .bg-white-80 { background: rgba(255, 255, 255, 0.8); }
+
+        .border-primary-20 { border-color: rgba(59, 130, 246, 0.2); }
+        .border-destructive-20 { border-color: rgba(239, 68, 68, 0.2); }
+        .border-chart-3-20 { border-color: rgba(16, 185, 129, 0.2); }
+        .border-chart-4-20 { border-color: rgba(245, 158, 11, 0.2); }
+        .border-accent-20 { border-color: rgba(147, 51, 234, 0.2); }
+        .border-primary-10 { border-color: rgba(59, 130, 246, 0.1); }
+
+        .text-primary-foreground-70 { color: rgba(255, 255, 255, 0.7); }
+        .text-primary-foreground-80 { color: rgba(255, 255, 255, 0.8); }
+        .text-accent-foreground-80 { color: rgba(255, 255, 255, 0.8); }
+
+        /* Phase badge styling */
+        .phase-badge {
+            padding: 4px 12px;
+            font-size: var(--text-xs);
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+            border-radius: 6px;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .pdf-container {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .page {
+                height: auto;
+                min-height: 100vh;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- Page 1: Cover Page -->
+        <div class="page">
+            <div class="card no-rounded brand-gradient-primary border-0 overflow-hidden relative h-full">
+                <div class="cover-gradient-overlay"></div>
+                <div class="cover-content">
+                    <!-- Top section with Logo and Proposal Date -->
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <!-- Logo placeholder -->
+                            <div class="logo-container">
+                                <svg class="logo-svg" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="10" y="50" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="currentColor">Eyther.AI</text>
+                                </svg>
+                            </div>
+                            <p class="text-lg font-medium opacity-95 mb-6 tracking-wide">
+                                Transforming Healthcare Revenue Cycle Management
+                            </p>
+                            <div class="divider-line"></div>
+                        </div>
+                        
+                        <!-- Proposal Date - Top Right -->
+                        <div class="space-y-2 text-right">
+                            <div class="text-primary-foreground-70 text-sm uppercase tracking-wider">
+                                Proposal Date:
+                            </div>
+                            <div class="text-primary-foreground font-semibold">
+                                {{proposalDate}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Center content -->
+                    <div class="flex-1 flex flex-col justify-center">
+                        <!-- Main Proposal Title -->
+                        <div class="mb-12">
+                            <h1 class="text-primary-foreground leading-tight mb-6 max-w-4xl">
+                                Revenue Cycle Management Services Proposal
+                            </h1>
+                            <div class="small-divider"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom section - Hospital Information -->
+                    <div class="mt-auto">
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <div class="text-primary-foreground-70 text-sm uppercase tracking-wider">
+                                        Submitted to:
+                                    </div>
+                                    <div class="text-primary-foreground font-semibold text-xl">
+                                        {{hospitalName}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Executive Summary -->
+        <div class="page p-10">
+            <div class="card h-full">
+                <div class="card-header pb-4">
+                    <h2 class="text-primary">Executive Summary</h2>
+                </div>
+                <div class="card-content space-y-8">
+                    <div>
+                        <p class="leading-relaxed text-foreground text-sm mb-4">
+                            Thank you for the opportunity to showcase Eyther.AI's capabilities at <strong class="text-primary">{{hospitalName}}</strong>. 
+                            Following our product demonstration, we are pleased to submit this comprehensive Revenue Cycle Management proposal. 
+                            Our name "Eyther" derives from "ether" - the fifth element that connects all others - reflecting our vision to become 
+                            the essential connector in healthcare between hospitals, insurers, government agencies, and patients.
+                        </p>
+                    </div>
+                    
+                    <div class="card bg-secondary-50 border-l-4 border-l-primary overflow-hidden">
+                        <div class="card-content p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-3 h-3 bg-primary rounded-full" style="width: 12px; height: 12px;"></div>
+                                <h4 class="text-primary font-semibold">Key Value Proposition</h4>
+                            </div>
+                            
+                            <p class="mb-4 leading-relaxed text-secondary-foreground text-sm">
+                                Through our dedicated on-site service delivery backed by AI-powered expert systems, we guarantee significant 
+                                improvements in your revenue cycle performance:
+                            </p>
+                            
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                                {{#if showDenialMetric}}
+                                <div class="metric-card border-primary-20">
+                                    <div class="card-content p-3 text-center">
+                                        <div class="text-2xl font-bold text-primary mb-1">&lt;3%</div>
+                                        <div class="text-xs font-medium text-secondary-foreground">
+                                            Rejection Rates
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/if}}
+                                
+                                {{#if showFirstPassMetric}}
+                                <div class="metric-card border-chart-3-20">
+                                    <div class="card-content p-3 text-center">
+                                        <div class="text-2xl font-bold text-chart-3 mb-1">70%+</div>
+                                        <div class="text-xs font-medium text-secondary-foreground">
+                                            First-Pass Claim Ratio
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/if}}
+                            </div>
+                            
+                            <div class="bg-white-50 rounded-lg p-3 border border-primary-10">
+                                <p class="text-secondary-foreground text-xs leading-relaxed">
+                                    Our deployed team members work closely with your hospital staff, supported by expert oversight to ensure 
+                                    accuracy and efficiency in every aspect of your revenue cycle management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p class="text-xs text-secondary-foreground leading-relaxed">
+                            This proposal outlines a comprehensive 120-day pilot program designed to demonstrate measurable results, 
+                            followed by a long-term partnership that will transform your revenue cycle management operations. 
+                            Our service fee structure is transparent and performance-based, ranging from 2-4% of your total 
+                            monthly claim value with no setup fees or implementation costs.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-auto">
+                        <div class="card bg-primary-10 border border-primary-20">
+                            <div class="card-content p-4">
+                                <h5 class="text-primary font-semibold text-sm mb-2">Projected Monthly Impact</h5>
+                                <p class="text-2xl font-bold text-primary">{{totalMonthlyImpact}}</p>
+                                <p class="text-xs text-muted-foreground">Revenue Optimization</p>
+                            </div>
+                        </div>
+                        <div class="card bg-chart-3-10 border border-chart-3-20">
+                            <div class="card-content p-4">
+                                <h5 class="text-chart-3 font-semibold text-sm mb-2">Annual Benefits</h5>
+                                <p class="text-2xl font-bold text-chart-3">{{totalAnnualImpact}}</p>
+                                <p class="text-xs text-muted-foreground">Total Revenue Impact</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Hospital Profile -->
+        <div class="page p-10">
+            <div class="card h-full">
+                <div class="card-header pb-6">
+                    <h2 class="text-primary">Hospital Profile & Current State Analysis</h2>
+                </div>
+                <div class="card-content space-y-8">
+                    <div class="h-full">
+                        <h3 class="text-primary mb-8">Hospital Overview</h3>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="space-y-6">
+                                <div class="card bg-muted border-2 border-primary-20">
+                                    <div class="card-content p-8">
+                                        <div class="text-sm text-muted-foreground uppercase tracking-wider mb-3">Hospital Name</div>
+                                        <div class="font-bold text-xl text-foreground">{{hospitalName}}</div>
+                                    </div>
+                                </div>
+                                <div class="card bg-muted border-2 border-chart-3-20">
+                                    <div class="card-content p-8">
+                                        <div class="text-sm text-muted-foreground uppercase tracking-wider mb-3">Monthly Claim Value</div>
+                                        <div class="font-bold text-xl text-chart-3">₹{{monthlyClaimValue}}</div>
+                                    </div>
+                                </div>
+                                <div class="card bg-muted border-2 border-chart-4-20">
+                                    <div class="card-content p-8">
+                                        <div class="text-sm text-muted-foreground uppercase tracking-wider mb-3">Average Length of Stay</div>
+                                        <div class="font-bold text-xl text-chart-4">{{avgLengthOfStay}} days</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="card bg-muted border-2 border-destructive-20">
+                                    <div class="card-content p-8">
+                                        <div class="text-sm text-muted-foreground uppercase tracking-wider mb-3">Current Denial Rate</div>
+                                        <div class="font-bold text-xl text-destructive">{{denialRate}}%</div>
+                                    </div>
+                                </div>
+                                <div class="card bg-muted border-2 border-chart-3-20">
+                                    <div class="card-content p-8">
+                                        <div class="text-sm text-muted-foreground uppercase tracking-wider mb-3">Total Claims Analyzed</div>
+                                        <div class="font-bold text-xl text-chart-3">{{totalClaims}}</div>
+                                    </div>
+                                </div>
+                                <div class="card bg-muted border-2 border-accent-20">
+                                    <div class="card-content p-8">
+                                        <div class="text-sm text-muted-foreground uppercase tracking-wider mb-3">Average Claim Value</div>
+                                        <div class="font-bold text-xl text-accent">₹{{averageClaimAmount}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 4: Comprehensive Financial & Revenue Impact Analysis -->
+        <div class="page p-10">
+            <div class="card h-full">
+                <div class="card-header pb-4">
+                    <h2 class="text-primary">Comprehensive Financial & Revenue Impact Analysis</h2>
+                    <p class="text-sm text-muted-foreground mt-2">Based on {{hospitalName}}'s 12-month performance data</p>
+                </div>
+                <div class="card-content space-y-4">
+                    <!-- Performance Comparison Table -->
+                    <div>
+                        <h3 class="text-primary mb-2 text-base">Current Performance vs. Eyther.AI Optimized State</h3>
+                        <div class="card overflow-hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse" style="font-size: 11px;">
+                                    <thead>
+                                        <tr class="brand-gradient-primary text-white">
+                                            <th class="p-2 text-left font-semibold">Performance Metric</th>
+                                            <th class="p-2 text-left font-semibold">Current State</th>
+                                            <th class="p-2 text-left font-semibold">Eyther.AI Target</th>
+                                            <th class="p-2 text-left font-semibold">Improvement</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#if showDenialMetric}}
+                                        <tr class="border-b">
+                                            <td class="p-2 font-medium text-white">Claim Denial Rate</td>
+                                            <td class="p-2 text-white font-semibold">{{denialRate}}%</td>
+                                            <td class="p-2 text-white"><span class="badge" style="padding: 2px 6px; font-size: 10px; background: var(--chart-3); color: white;">Less than 3%</span></td>
+                                            <td class="p-2 text-white font-medium">{{denialRate}}% → 3%</td>
+                                        </tr>
+                                        {{/if}}
+                                        {{#if showFirstPassMetric}}
+                                        <tr class="border-b bg-muted">
+                                            <td class="p-2 font-medium">First Pass Claim Ratio</td>
+                                            <td class="p-2 font-semibold">{{firstPassRate}}%</td>
+                                            <td class="p-2"><span class="badge" style="padding: 2px 6px; font-size: 10px; background: var(--chart-3); color: white;">Over 70%</span></td>
+                                            <td class="p-2 font-medium">{{firstPassRate}}% → 70%+</td>
+                                        </tr>
+                                        {{/if}}
+                                        <tr class="border-b">
+                                            <td class="p-2 font-medium">Administrative Hours</td>
+                                            <td class="p-2 font-semibold">{{currentProcessingTime}}</td>
+                                            <td class="p-2"><span class="badge" style="padding: 2px 6px; font-size: 10px; background: var(--chart-3); color: white;">10-15 minutes</span></td>
+                                            <td class="p-2 font-medium">75% reduction</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial Impact Table -->
+                    <div>
+                        <h3 class="text-primary mb-2 text-base">Projected Financial Impact</h3>
+                        <div class="card overflow-hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse" style="font-size: 11px;">
+                                    <thead>
+                                        <tr class="brand-gradient-primary text-white">
+                                            <th class="p-2 text-left font-semibold">Revenue Optimization Area</th>
+                                            <th class="p-2 text-left font-semibold">Current State</th>
+                                            <th class="p-2 text-left font-semibold">Optimized State</th>
+                                            <th class="p-2 text-left font-semibold">Monthly Savings</th>
+                                            <th class="p-2 text-left font-semibold">Annual Impact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#if showDenialMetric}}
+                                        <tr class="border-b bg-chart-4-10">
+                                            <td class="p-2 font-medium text-white">Denial Rate Reduction</td>
+                                            <td class="p-2 font-semibold text-white">{{denialReductionCurrent}}</td>
+                                            <td class="p-2 font-semibold text-white">{{denialReductionOptimized}}</td>
+                                            <td class="p-2 font-semibold text-white">{{denialReductionSavings}}</td>
+                                            <td class="p-2 font-bold text-white">{{denialReductionAnnual}}</td>
+                                        </tr>
+                                        {{/if}}
+                                        {{#if showFirstPassMetric}}
+                                        <tr class="border-b bg-chart-3-10">
+                                            <td class="p-2 font-medium">First Pass Improvement</td>
+                                            <td class="p-2 font-semibold">{{firstPassCurrent}}</td>
+                                            <td class="p-2 font-semibold">{{firstPassOptimized}}</td>
+                                            <td class="p-2 font-semibold">{{firstPassSavings}}</td>
+                                            <td class="p-2 font-bold">{{firstPassAnnual}}</td>
+                                        </tr>
+                                        {{/if}}
+                                        <tr class="border-b bg-accent-10">
+                                            <td class="p-2 font-medium">Administrative Efficiency</td>
+                                            <td class="p-2 font-semibold">{{adminEfficiencyCurrent}}</td>
+                                            <td class="p-2 font-semibold">{{adminEfficiencyOptimized}}</td>
+                                            <td class="p-2 font-semibold">{{adminEfficiencySavings}}</td>
+                                            <td class="p-2 font-bold">{{adminEfficiencyAnnual}}</td>
+                                        </tr>
+                                        <tr style="background: rgba(16, 185, 129, 0.8);" class="text-white">
+                                            <td class="p-2 font-bold">Total Impact</td>
+                                            <td class="p-2 font-bold" colspan="2">Combined Revenue Optimization</td>
+                                            <td class="p-2 font-bold">{{totalMonthlyImpact}}</td>
+                                            <td class="p-2 font-bold">{{totalAnnualImpact}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom metrics -->
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="card border-2 border-destructive-20 bg-destructive-5">
+                            <div class="card-content p-3 text-center">
+                                <div class="text-2xl font-bold text-destructive mb-1 leading-none">{{leakageRate}}%</div>
+                                <div class="text-xs text-muted-foreground">Revenue Leakage</div>
+                            </div>
+                        </div>
+                        <div class="card border-2 border-destructive-20 bg-destructive-5">
+                            <div class="card-content p-3 text-center">
+                                <div class="text-2xl font-bold text-destructive mb-1 leading-none">{{leakageAmount}}</div>
+                                <div class="text-xs text-muted-foreground">Annual at Risk</div>
+                            </div>
+                        </div>
+                        <div class="card border-2 border-primary-20 bg-primary-10">
+                            <div class="card-content p-3 text-center">
+                                <div class="text-2xl font-bold text-primary mb-1 leading-none">{{calculatedAnnualImpact}}</div>
+                                <div class="text-xs text-muted-foreground">Annual Savings</div>
+                            </div>
+                        </div>
+                        <div class="card border-2 border-chart-3-20 bg-chart-3-10">
+                            <div class="card-content p-3 text-center">
+                                <div class="text-2xl font-bold text-chart-3 mb-1 leading-none">{{paybackPeriod}}</div>
+                                <div class="text-xs text-muted-foreground">Months Payback</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5: About Eyther.AI -->
+        <div class="page p-10">
+            <div class="card h-full">
+                <div class="card-header pb-6">
+                    <h2 class="text-primary">About Eyther.AI</h2>
+                </div>
+                <div class="card-content space-y-8">
+                    <div>
+                        <p class="leading-relaxed text-foreground text-sm mb-4">
+                            Eyther.AI stands at the forefront of healthcare revenue cycle transformation in India. Our name "Eyther" 
+                            derives from "ether" - the fifth element that connects all others - reflecting our vision to become the 
+                            essential connector in healthcare between hospitals, insurers, government agencies, and patients.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-primary mb-4">Our Mission</h3>
+                        <div class="card bg-secondary-50 border-l-4 border-l-primary">
+                            <div class="card-content p-6">
+                                <p class="text-secondary-foreground text-sm leading-relaxed">
+                                    To empower healthcare providers with intelligent revenue cycle solutions that maximize 
+                                    financial performance while reducing administrative burden, allowing them to focus on 
+                                    what matters most - patient care.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-primary mb-4">Why Healthcare Providers Choose Eyther.AI</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="card border border-primary-20">
+                                <div class="card-content p-4">
+                                    <h5 class="font-semibold text-primary mb-2">Domain Expertise</h5>
+                                    <p class="text-xs text-muted-foreground">
+                                        Deep understanding of Indian healthcare schemes including PMJAY, RGHS, and state-specific programs
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card border border-primary-20">
+                                <div class="card-content p-4">
+                                    <h5 class="font-semibold text-primary mb-2">Proven Results</h5>
+                                    <p class="text-xs text-muted-foreground">
+                                        Consistent track record of reducing denial rates below 3% and improving collections by 40%+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card border border-primary-20">
+                                <div class="card-content p-4">
+                                    <h5 class="font-semibold text-primary mb-2">End-to-End Service</h5>
+                                    <p class="text-xs text-muted-foreground">
+                                        Complete revenue cycle management from patient registration to final payment reconciliation
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card border border-primary-20">
+                                <div class="card-content p-4">
+                                    <h5 class="font-semibold text-primary mb-2">Risk-Free Model</h5>
+                                    <p class="text-xs text-muted-foreground">
+                                        Performance-based pricing with guaranteed ROI and no upfront infrastructure investment
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 6: Implementation Roadmap -->
+        <div class="page p-10">
+            <div class="card h-full">
+                <div class="card-header pb-6">
+                    <h2 class="text-primary">Implementation Roadmap</h2>
+                </div>
+                <div class="card-content space-y-8">
+                    <div>
+                        <p class="leading-relaxed text-foreground text-sm mb-6">
+                            Our proven implementation methodology ensures smooth transition with zero disruption to your 
+                            ongoing operations. The phased approach allows for gradual optimization while maintaining 
+                            continuity of service.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="card border-l-4 border-l-primary">
+                            <div class="card-content p-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-semibold text-primary">Phase 1: Assessment & Setup</h4>
+                                    <span class="phase-badge">Days 1-30</span>
+                                </div>
+                                <p class="text-xs text-secondary-foreground mb-2">
+                                    The implementation begins with deploying a dedicated Eyther.AI team member at your hospital to:
+                                </p>
+                                <ul class="text-xs text-muted-foreground space-y-1 list-disc" style="margin-left: 20px;">
+                                    <li>Conduct comprehensive workflow analysis</li>
+                                    <li>Document current processes and pain points</li>
+                                    <li>Set up integration with existing systems</li>
+                                    <li>Establish baseline metrics and KPIs</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card border-l-4 border-l-chart-3">
+                            <div class="card-content p-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-semibold text-chart-3">Phase 2: Pilot Implementation</h4>
+                                    <span class="phase-badge">Days 31-60</span>
+                                </div>
+                                <p class="text-xs text-secondary-foreground mb-2">
+                                    Limited rollout with select departments to:
+                                </p>
+                                <ul class="text-xs text-muted-foreground space-y-1 list-disc" style="margin-left: 20px;">
+                                    <li>Test and refine workflows</li>
+                                    <li>Train hospital staff on new processes</li>
+                                    <li>Demonstrate early wins and ROI</li>
+                                    <li>Fine-tune system configurations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card border-l-4 border-l-accent">
+                            <div class="card-content p-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-semibold text-accent">Phase 3: Full Deployment</h4>
+                                    <span class="phase-badge">Days 61-90</span>
+                                </div>
+                                <p class="text-xs text-secondary-foreground mb-2">
+                                    Hospital-wide implementation with:
+                                </p>
+                                <ul class="text-xs text-muted-foreground space-y-1 list-disc" style="margin-left: 20px;">
+                                    <li>Complete team deployment across all departments</li>
+                                    <li>Full automation and AI integration</li>
+                                    <li>Real-time performance monitoring</li>
+                                    <li>Continuous optimization based on results</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-primary mb-4">Success Factors</h3>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-primary mb-1">Zero</div>
+                                <div class="text-xs text-muted-foreground">Disruption to Operations</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-chart-3 mb-1">30 Days</div>
+                                <div class="text-xs text-muted-foreground">To First Results</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-accent mb-1">90 Days</div>
+                                <div class="text-xs text-muted-foreground">To Full Optimization</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 7: Next Steps & Contact -->
+        <div class="page">
+            <div class="h-full flex flex-col p-12">
+                <!-- Next Steps -->
+                <div class="card mb-6">
+                    <div class="card-header pb-4">
+                        <h2 class="text-primary">Next Steps</h2>
+                    </div>
+                    <div class="card-content space-y-4">
+                        <p class="text-sm text-foreground mb-4">
+                            To proceed with this partnership, we recommend the following immediate actions:
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex gap-4">
+                                <div class="text-2xl font-bold text-primary">1.</div>
+                                <div>
+                                    <h5 class="font-semibold text-foreground mb-1">Internal Review</h5>
+                                    <p class="text-xs text-secondary-foreground">
+                                        Review this proposal with your executive team and department heads
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <div class="text-2xl font-bold text-primary">2.</div>
+                                <div>
+                                    <h5 class="font-semibold text-foreground mb-1">Demo Session</h5>
+                                    <p class="text-xs text-secondary-foreground">
+                                        Schedule a detailed product demonstration with key stakeholders
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <div class="text-2xl font-bold text-primary">3.</div>
+                                <div>
+                                    <h5 class="font-semibold text-foreground mb-1">Site Assessment</h5>
+                                    <p class="text-xs text-secondary-foreground">
+                                        Allow our team to conduct a comprehensive on-site assessment
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4">
+                                <div class="text-2xl font-bold text-primary">4.</div>
+                                <div>
+                                    <h5 class="font-semibold text-foreground mb-1">Contract Finalization</h5>
+                                    <p class="text-xs text-secondary-foreground">
+                                        Review and finalize service agreement terms
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="card brand-gradient-accent border-0 text-accent-foreground">
+                    <div class="card-header pb-4">
+                        <h2 class="text-accent-foreground">Contact Information</h2>
+                    </div>
+                    <div class="card-content space-y-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <h4 class="text-accent-foreground">Primary Contact</h4>
+                                <div class="space-y-2 text-sm">
+                                    <p class="font-semibold">{{teamMemberName}}</p>
+                                    <p>Email: <strong>{{contactEmail}}</strong></p>
+                                    <p>Phone: <strong>{{contactPhone}}</strong></p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <h4 class="text-accent-foreground">Eyther.AI</h4>
+                                <p class="text-accent-foreground-80 text-sm">Your Revenue Cycle Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

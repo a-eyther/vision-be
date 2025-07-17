@@ -1,0 +1,43 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build and deployment
+dist/
+build/
+.vercel/
+
+# Temporary files
+*.tmp
+*.temp
+uploads/
+generated/
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Test coverage
+coverage/
+.nyc_output/
