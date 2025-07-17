@@ -16,6 +16,8 @@ const connectionConfig = process.env.DATABASE_URL
       database: process.env.DB_NAME || 'csv_dashboard_auth',
       user: process.env.DB_USER || process.env.USER,
       password: process.env.DB_PASSWORD || '',
+      // Add SSL configuration for AWS RDS
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
     };
 
 const pool = new Pool({
