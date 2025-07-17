@@ -228,10 +228,8 @@ process.on('SIGINT', () => {
   process.exit(0);
 });
 
-// Only start the server if not in Vercel environment
-if (!process.env.VERCEL) {
-  startServer();
-}
+// Start the server
+startServer();
 
 // Export for serverless environments
 export default app;
